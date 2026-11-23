@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080A12">
+<title>Devis & Factures — Démo · Cheikh Tidiane Mbow</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23080A12'/%3E%3Ctext x='50' y='66' font-size='48' font-family='sans-serif' font-weight='800' text-anchor='middle' fill='%2365D8E8'%3ECM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080A12;--card:#0E1220;--card2:#131830;--line:rgba(169,149,255,.22);--paper:#f3ecff;--muted:#9fa6c4;--cyan:#65D8E8;--violet:#a995ff;--orange:#ff941f;--ok:#7ee8a2;--bad:#ff6b6b;--mono:'DM Mono',ui-monospace,monospace;--sans:'Manrope',system-ui,sans-serif;--display:'Space Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--paper);font:14px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}button,input,select,textarea{font:inherit;color:inherit}
+.top{position:sticky;top:0;z-index:50;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px max(20px,env(safe-area-inset-left));padding-top:max(12px,env(safe-area-inset-top));background:rgba(8,10,18,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font:11px var(--mono);letter-spacing:.08em}
+.top .l,.top .r{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.top a{text-decoration:none;color:var(--cyan)}
+.badge{color:var(--orange);border:1px solid rgba(255,148,31,.45);padding:4px 8px}
+.pill,.btn{font:11px var(--mono);letter-spacing:.08em;background:none;border:1px solid var(--line);padding:9px 12px;cursor:pointer;color:var(--cyan);transition:.2s}
+.pill:hover,.btn:hover{border-color:var(--cyan);background:rgba(101,216,232,.08)}.btn.p{background:var(--cyan);color:#06121a;border-color:var(--cyan);font-weight:500}.btn.p:hover{filter:brightness(1.1)}.btn.d{color:var(--bad);border-color:rgba(255,107,107,.4)}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.03em}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+.card{background:linear-gradient(145deg,var(--card2),var(--card));border:1px solid var(--line);padding:20px}
+.muted{color:var(--muted)}.mono{font-family:var(--mono)}
+input,select,textarea{background:#0a0e1a;border:1px solid var(--line);padding:10px 12px;width:100%}
+label{display:block;font:11px var(--mono);letter-spacing:.08em;color:var(--muted);margin:12px 0 6px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+nav.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}nav.tabs .pill.on{background:var(--cyan);color:#06121a;border-color:var(--cyan)}
+h1{font-size:clamp(28px,5vw,46px)}.sub{margin:6px 0 22px;color:var(--muted)}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.k b{display:block;font:700 28px var(--display);color:var(--orange);letter-spacing:-.04em}.k span{font:11px var(--mono);color:var(--muted);letter-spacing:.08em}
+table{width:100%;border-collapse:collapse}th{font:10px var(--mono);letter-spacing:.1em;color:var(--muted);text-align:left;padding:10px;border-bottom:1px solid var(--line)}td{padding:12px 10px;border-bottom:1px solid rgba(169,149,255,.1)}td.n,th.n{text-align:right}.tw{overflow-x:auto}
+.st{font:10px var(--mono);padding:3px 8px;border:1px solid;letter-spacing:.06em;white-space:nowrap}.st.payée,.st.accepté{color:var(--ok)}.st.envoyé,.st.brouillon{color:var(--cyan)}.st.annulée{color:var(--muted)}.st.retard{color:var(--bad)}
+.row{display:grid;grid-template-columns:2fr 70px 110px 36px;gap:8px;margin-bottom:8px}
+.modal{position:fixed;inset:0;z-index:80;background:rgba(3,5,10,.82);display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:20px}.modal.on{display:flex}
+.mbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}.mbar label{margin:0 0 0 8px;display:flex;gap:6px;align-items:center}.mbar input{width:auto}
+.sheet{background:#fff;color:#14161f;width:min(780px,100%);padding:40px;position:relative;font-family:var(--sans)}.sheet h2{font-size:26px;color:#14161f}.sheet .hd{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-bottom:3px solid #14161f;padding-bottom:16px;margin-bottom:20px}.sheet table th{color:#555;border-color:#ccc}.sheet td{border-color:#e5e5e5}.sheet .tot{margin:18px 0 0 auto;width:260px}.sheet .tot div{display:flex;justify-content:space-between;padding:5px 0}.sheet .tot .g{border-top:2px solid #14161f;font-weight:800;font-size:16px;margin-top:6px;padding-top:10px}
+.words{margin-top:18px;font-style:italic;color:#444}.stamp{position:absolute;right:50px;bottom:36px;width:170px;opacity:.85;transform:rotate(-8deg)}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--cyan);color:#06121a;padding:10px 16px;font:12px var(--mono);z-index:99;display:none}
+@media(max-width:640px){.sheet{padding:22px}.row{grid-template-columns:1fr 60px 90px 34px}.stamp{width:110px;right:20px}}
+@media print{.top,.wrap,.mbar,.toast{display:none!important}.modal{position:static;background:#fff;padding:0;display:block}.sheet{box-shadow:none;width:100%}}
+
+</style></head><body>
+<header class="top"><div class="l"><a href="../index.html#projects" data-en="← Back to portfolio">← Retour au portfolio</a><span class="badge" data-en="DEMO · FICTITIOUS DATA">DÉMO · DONNÉES FICTIVES</span></div><div class="r"><span class="muted">Entreprise Démo SARL</span><button class="pill" id="lang" type="button" aria-label="Switch language / Changer de langue">EN</button></div></header>
+<main class="wrap">
+<h1 data-en="Quotes &amp; Invoices">Devis &amp; Factures</h1>
+<p class="sub" data-en="Demo of the management web app: clients, quotes converted to invoices, VAT, payments, reminders and printable PDF. Data is fictitious and stays in your browser.">Démo de l’application de gestion : clients, devis convertis en factures, TVA, paiements, relances et PDF imprimable. Les données sont fictives et restent dans votre navigateur.</p>
+<nav class="tabs" id="tabs"></nav><div id="view"></div></main>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div><div class="mbar" id="mbar"></div><div class="sheet" id="sheet"></div></div></div><div class="toast" id="toast"></div>
+<script>
+let lang='fr';try{const q=new URLSearchParams(location.search).get('lang'),s=localStorage.getItem('lang');lang=(q==='en'||q==='fr')?q:(s==='en'||s==='fr')?s:'fr'}catch(e){}
+const t=(f,e)=>lang==='en'?e:f;
+function applyLang(){document.documentElement.lang=lang;document.querySelectorAll('[data-en]').forEach(e=>{if(e.dataset.fr===undefined)e.dataset.fr=e.innerHTML;e.innerHTML=lang==='en'?e.dataset.en:e.dataset.fr});document.querySelectorAll('[data-en-ph]').forEach(e=>{if(!e.dataset.frPh)e.dataset.frPh=e.placeholder;e.placeholder=lang==='en'?e.dataset.enPh:e.dataset.frPh});document.getElementById('lang').textContent=lang==='en'?'FR':'EN';document.title=document.title.replace(/ — Démo.*| — Demo.*/,lang==='en'?' — Demo · Cheikh Tidiane Mbow':' — Démo · Cheikh Tidiane Mbow');if(typeof render==='function')render()}
+document.getElementById('lang').onclick=()=>{lang=lang==='fr'?'en':'fr';try{localStorage.setItem('lang',lang)}catch(e){}applyLang()};
+
+const CO={name:'Entreprise Démo SARL',addr:'Dakar, Sénégal · +221 77 000 00 00',ninea:'NINEA 000000000'};
+const seed=()=>({seq:{devis:2,facture:2},clients:[{id:1,n:'Société Atlantique SARL'},{id:2,n:'Cabinet Teranga Conseil'},{id:3,n:'Boutique Baobab'},{id:4,n:'Garage Horizon'}],
+docs:[{id:1,type:'devis',num:'DEV-2026-001',cl:1,date:'2026-10-02',tva:true,st:'accepté',l:[{d:'Maintenance réseau (forfait)',q:1,p:250000},{d:'Câble RJ45 (m)',q:40,p:600}]},
+{id:2,type:'devis',num:'DEV-2026-002',cl:3,date:'2026-11-12',tva:true,st:'envoyé',l:[{d:'Création site vitrine',q:1,p:420000}]},
+{id:3,type:'facture',num:'FAC-2026-001',cl:2,date:'2026-09-20',tva:true,st:'payée',l:[{d:'Audit sécurité',q:1,p:300000}]},
+{id:4,type:'facture',num:'FAC-2026-002',cl:4,date:'2026-10-28',tva:true,st:'envoyé',l:[{d:'Installation caméras',q:4,p:85000},{d:'Main-d’œuvre',q:1,p:60000}]}]});
+let S;try{S=JSON.parse(localStorage.getItem('demo_df')||'null')}catch(e){}if(!S)S=seed();
+const save=()=>{try{localStorage.setItem('demo_df',JSON.stringify(S))}catch(e){}};
+let tab='dash',stamp=true;const $=id=>document.getElementById(id);
+const money=n=>Math.round(n).toLocaleString(lang==='en'?'en-US':'fr-FR')+' FCFA';
+const calc=d=>{const ht=d.l.reduce((a,x)=>a+x.q*x.p,0),tv=d.tva?Math.round(ht*.18):0;return{ht,tv,ttc:ht+tv}};
+const cname=id=>(S.clients.find(c=>c.id==id)||{}).n||'—';
+const UF=['zéro','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf'],TF=['','','vingt','trente','quarante','cinquante','soixante'];
+function wf(n){if(n<20)return UF[n];if(n<70){const d=n/10|0,u=n%10;return TF[d]+(u?(u==1?' et un':'-'+UF[u]):'')}if(n<80)return 'soixante'+(n==71?' et onze':'-'+UF[n-60]);if(n<100)return 'quatre-vingt'+(n==80?'s':'-'+UF[n-80]);if(n<1000){const c=n/100|0,r=n%100;return(c>1?UF[c]+' ':'')+'cent'+(r?' '+wf(r):(c>1?'s':''))}if(n<1e6){const k=n/1000|0,r=n%1000;return(k>1?wf(k)+' ':'')+'mille'+(r?' '+wf(r):'')}const m=n/1e6|0,r=n%1e6;return wf(m)+' million'+(m>1?'s':'')+(r?' '+wf(r):'')}
+const UE=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'],TE=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+function we(n){if(n<20)return UE[n];if(n<100)return TE[n/10|0]+(n%10?'-'+UE[n%10]:'');if(n<1000)return UE[n/100|0]+' hundred'+(n%100?' '+we(n%100):'');if(n<1e6)return we(n/1000|0)+' thousand'+(n%1000?' '+we(n%1000):'');return we(n/1e6|0)+' million'+(n%1e6?' '+we(n%1e6):'')}
+const words=n=>{const w=lang==='en'?we(n):wf(n);return w[0].toUpperCase()+w.slice(1)+t(' francs CFA',' CFA francs')};
+const stLabel=s=>({brouillon:t('brouillon','draft'),envoyé:t('envoyé','sent'),accepté:t('accepté','accepted'),payée:t('payée','paid'),annulée:t('annulée','cancelled')}[s]||s);
+const late=d=>d.type==='facture'&&d.st==='envoyé'&&(Date.now()-new Date(d.date))/864e5>30;
+const stTag=d=>{const l=late(d);return `<span class="st ${l?'retard':d.st}">${l?t('EN RETARD','OVERDUE'):stLabel(d.st).toUpperCase()}</span>`};
+function toast(m){const e=$('toast');e.textContent=m;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2200)}
+function render(){
+ const T=[['dash',t('Tableau de bord','Dashboard')],['clients',t('Clients','Clients')],['devis',t('Devis','Quotes')],['facture',t('Factures','Invoices')],['new',t('+ Nouveau devis','+ New quote')]];
+ $('tabs').innerHTML=T.map(([k,l])=>`<button class="pill ${tab===k?'on':''}" data-t="${k}">${l}</button>`).join('')+`<button class="pill" data-t="reset" style="margin-left:auto">${t('Réinitialiser la démo','Reset demo')}</button>`;
+ $('tabs').onclick=e=>{const k=e.target.dataset.t;if(!k)return;if(k==='reset'){S=seed();save();toast(t('Démo réinitialisée','Demo reset'))}else tab=k;render()};
+ const V=$('view');
+ if(tab==='dash'){const f=S.docs.filter(d=>d.type==='facture'&&d.st!=='annulée'),sum=a=>a.reduce((x,d)=>x+calc(d).ttc,0);
+  V.innerHTML=`<div class="grid4"><div class="card k"><b>${money(sum(f))}</b><span>${t('FACTURÉ','INVOICED')}</span></div><div class="card k"><b>${money(sum(f.filter(d=>d.st==='payée')))}</b><span>${t('ENCAISSÉ','COLLECTED')}</span></div><div class="card k"><b>${money(sum(f.filter(d=>d.st!=='payée')))}</b><span>${t('EN ATTENTE','PENDING')}</span></div><div class="card k"><b>${S.docs.filter(d=>d.type==='devis'&&d.st!=='accepté'&&d.st!=='annulée').length}</b><span>${t('DEVIS OUVERTS','OPEN QUOTES')}</span></div></div>
+  <div class="card" style="margin-top:12px"><h3 style="margin-bottom:10px">${t('Documents récents','Recent documents')}</h3>${list(S.docs.slice().sort((a,b)=>b.id-a.id).slice(0,5))}</div>`}
+ else if(tab==='clients')V.innerHTML=`<div class="card tw"><table><tr><th>${t('CLIENT','CLIENT')}</th><th class="n">${t('DOCUMENTS','DOCUMENTS')}</th><th class="n">${t('TOTAL FACTURÉ','TOTAL INVOICED')}</th></tr>${S.clients.map(c=>{const ds=S.docs.filter(d=>d.cl==c.id);return`<tr><td>${c.n}</td><td class="n">${ds.length}</td><td class="n">${money(ds.filter(d=>d.type==='facture'&&d.st!=='annulée').reduce((a,d)=>a+calc(d).ttc,0))}</td></tr>`}).join('')}</table></div>`;
+ else if(tab==='devis'||tab==='facture')V.innerHTML=`<div class="card">${list(S.docs.filter(d=>d.type===tab))}</div>`;
+ else form(V);
+ V.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>show(+b.dataset.v));
+}
+function list(a){if(!a.length)return`<p class="muted">${t('Aucun document.','No documents.')}</p>`;return`<div class="tw"><table><tr><th>N°</th><th>${t('CLIENT','CLIENT')}</th><th>${t('DATE','DATE')}</th><th class="n">${t('TOTAL TTC','TOTAL')}</th><th>${t('STATUT','STATUS')}</th><th></th></tr>${a.map(d=>`<tr><td class="mono">${d.num}</td><td>${cname(d.cl)}</td><td>${d.date}</td><td class="n">${money(calc(d).ttc)}</td><td>${stTag(d)}</td><td><button class="pill" data-v="${d.id}">${t('Voir / PDF','View / PDF')}</button></td></tr>`).join('')}</table></div>`}
+let draft=[{d:'',q:1,p:0}];
+function form(V){V.innerHTML=`<div class="card"><h3>${t('Nouveau devis','New quote')}</h3><label>${t('CLIENT','CLIENT')}</label><select id="fc">${S.clients.map(c=>`<option value="${c.id}">${c.n}</option>`).join('')}</select><label>${t('LIGNES','LINES')}</label><div id="lines"></div><button class="pill" id="addl">+ ${t('Ajouter une ligne','Add a line')}</button><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="ftva" checked style="width:auto"> ${t('Appliquer la TVA (18 %)','Apply VAT (18%)')}</label><p class="mono" id="ftot" style="font-size:16px;color:var(--orange)"></p><button class="btn p" id="fs">${t('Créer le devis','Create quote')}</button></div>`;
+ const paint=()=>{$('lines').innerHTML=draft.map((x,i)=>`<div class="row"><input data-i="${i}" data-k="d" value="${x.d.replace(/"/g,'&quot;')}" placeholder="${t('Désignation','Description')}"><input data-i="${i}" data-k="q" type="number" min="1" value="${x.q}"><input data-i="${i}" data-k="p" type="number" min="0" value="${x.p}"><button class="pill d" data-x="${i}" aria-label="${t('Supprimer','Remove')}">×</button></div>`).join('');tot()};
+ const tot=()=>{const c=calc({l:draft,tva:$('ftva').checked});$('ftot').textContent=`${t('Total TTC','Total')} : ${money(c.ttc)}`};
+ $('lines').oninput=e=>{const i=e.target.dataset.i;if(i===undefined)return;const k=e.target.dataset.k;draft[i][k]=k==='d'?e.target.value:+e.target.value||0;tot()};
+ $('lines').onclick=e=>{const x=e.target.dataset.x;if(x===undefined)return;draft.splice(x,1);if(!draft.length)draft=[{d:'',q:1,p:0}];paint()};
+ $('addl').onclick=()=>{draft.push({d:'',q:1,p:0});paint()};$('ftva').onchange=tot;
+ $('fs').onclick=()=>{const l=draft.filter(x=>x.d.trim()&&x.p>0);if(!l.length)return toast(t('Ajoutez au moins une ligne valide','Add at least one valid line'));S.seq.devis++;S.docs.push({id:Date.now(),type:'devis',num:'DEV-2026-'+String(S.seq.devis).padStart(3,'0'),cl:+$('fc').value,date:new Date().toISOString().slice(0,10),tva:$('ftva').checked,st:'brouillon',l});draft=[{d:'',q:1,p:0}];save();tab='devis';toast(t('Devis créé','Quote created'));render()};paint()}
+let cur=null;
+function show(id){cur=S.docs.find(d=>d.id===id);sheet();$('modal').classList.add('on');document.body.style.overflow='hidden'}
+function close(){$('modal').classList.remove('on');document.body.style.overflow='';cur=null;render()}
+function sheet(){const d=cur,c=calc(d),f=d.type==='facture';
+ $('mbar').innerHTML=`<button class="btn p" id="m-print">${t('Imprimer / PDF','Print / PDF')}</button><label><input type="checkbox" id="m-stamp" ${stamp?'checked':''}> ${t('Cachet &amp; signature','Stamp &amp; signature')}</label>`+(!f&&d.st!=='accepté'?`<button class="pill" id="m-acc">${t('Marquer accepté','Mark accepted')}</button>`:'')+(!f?`<button class="pill" id="m-conv">${t('Convertir en facture','Convert to invoice')}</button>`:'')+(f&&d.st!=='payée'&&d.st!=='annulée'?`<button class="pill" id="m-pay">${t('Marquer payée','Mark paid')}</button><button class="pill" id="m-rem">${t('Relancer','Send reminder')}</button>`:'')+(f&&d.st!=='annulée'?`<button class="pill d" id="m-can">${t('Annuler','Cancel')}</button>`:'')+`<button class="pill" id="m-x" style="margin-left:auto">${t('Fermer','Close')}</button>`;
+ $('sheet').innerHTML=`<div class="hd"><div><h2>${CO.name}</h2><div>${CO.addr}<br>${CO.ninea}</div></div><div style="text-align:right"><h2>${f?t('FACTURE','INVOICE'):t('DEVIS','QUOTE')}</h2><div class="mono">${d.num}<br>${d.date}</div>${d.st==='annulée'?`<b style="color:#c00">${t('ANNULÉE','CANCELLED')}</b>`:''}</div></div><p><b>${t('Client','Client')} :</b> ${cname(d.cl)}</p><table><tr><th>${t('DÉSIGNATION','DESCRIPTION')}</th><th class="n">${t('QTÉ','QTY')}</th><th class="n">${t('PRIX UNIT.','UNIT PRICE')}</th><th class="n">${t('TOTAL','TOTAL')}</th></tr>${d.l.map(x=>`<tr><td>${x.d}</td><td class="n">${x.q}</td><td class="n">${money(x.p)}</td><td class="n">${money(x.q*x.p)}</td></tr>`).join('')}</table><div class="tot"><div><span>${t('Total HT','Subtotal')}</span><span>${money(c.ht)}</span></div><div><span>${t('TVA 18 %','VAT 18%')}</span><span>${money(c.tv)}</span></div><div class="g"><span>${t('Total TTC','Total')}</span><span>${money(c.ttc)}</span></div></div><p class="words">${t('Arrêté le présent document à la somme de','This document is closed at the sum of')} : <b>${words(c.ttc)}</b></p>`+(stamp?`<svg class="stamp" viewBox="0 0 200 120" aria-hidden="true"><ellipse cx="100" cy="60" rx="92" ry="52" fill="none" stroke="#1a3d9c" stroke-width="3"/><ellipse cx="100" cy="60" rx="80" ry="40" fill="none" stroke="#1a3d9c" stroke-width="1.5"/><text x="100" y="52" text-anchor="middle" font-size="13" font-weight="800" fill="#1a3d9c">ENTREPRISE DÉMO</text><text x="100" y="72" text-anchor="middle" font-size="11" fill="#1a3d9c">DAKAR · SÉNÉGAL</text><path d="M30 105 q20-30 35 0 t30 -5 t40 0" fill="none" stroke="#1a3d9c" stroke-width="2"/></svg>`:'');
+ const g=i=>$(i);g('m-print').onclick=()=>print();g('m-x').onclick=close;g('m-stamp').onchange=e=>{stamp=e.target.checked;sheet()};
+ if(g('m-acc'))g('m-acc').onclick=()=>{d.st='accepté';save();sheet()};
+ if(g('m-conv'))g('m-conv').onclick=()=>{S.seq.facture++;const nd={...JSON.parse(JSON.stringify(d)),id:Date.now(),type:'facture',num:'FAC-2026-'+String(S.seq.facture).padStart(3,'0'),date:new Date().toISOString().slice(0,10),st:'envoyé'};S.docs.push(nd);d.st='accepté';save();toast(t('Facture ','Invoice ')+nd.num+t(' créée',' created'));cur=nd;sheet()};
+ if(g('m-pay'))g('m-pay').onclick=()=>{d.st='payée';save();sheet();toast(t('Paiement enregistré','Payment recorded'))};
+ if(g('m-rem'))g('m-rem').onclick=()=>toast(t('Relance envoyée (simulation)','Reminder sent (simulation)'));
+ if(g('m-can'))g('m-can').onclick=()=>{d.st='annulée';save();sheet();toast(t('Facture annulée','Invoice cancelled'))}}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&cur)close()});
+
+applyLang();
+</script></body></html>
